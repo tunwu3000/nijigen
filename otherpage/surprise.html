@@ -6,6 +6,10 @@
     <link rel="preload" href="../image/wander.png" as="image">
     <title>Document</title>
     <style>
+        .body {
+            visibility: hidden;
+            
+        } 
         .box {
             /* display: inline-block; */
             background: url(../image/wander.png) no-repeat center/cover;
@@ -68,6 +72,12 @@
         <a href="../index.html" class="sf">散枫</a>
         <!-- <span>( ↑ 点一下？)</span> -->
     </div>
-    <audio src="../audios/v0300fg10000cm00inrc77u092jlr10g.m4a" autoplay loop preload="auto"></audio>
+    <audio src="../audios/v0300fg10000cm00inrc77u092jlr10g.mp3" autoplay loop preload="auto"></audio>
+
+    <script>
+    window.addEventListener('load',function(){
+        document.body.style.visibility = `visible`
+    })
+    </script>
 </body>
 </html>
