@@ -41,43 +41,7 @@
        text-align: center;
        margin-top: 30px;
         }
-  
-        /* .left,.right {
-            position: absolute;
-            display: inline-block;
-            bottom: 50px;
-            left: -100px;
-            padding: 5px 10px;
-            height: 40px;
-            line-height: 40px;
-            text-align: center;
-            background-color: #2a2a2ab6;
-            color: rgb(205, 205, 205);
-            border: 2px solid black;
-            border-radius: 50px;
-            animation: movel 1s linear forwards;
-            cursor: pointer;
-            text-decoration: none;
-            transition: transform 0.3s;
-            
-        }
-        .right {
-            right: -100px;
-            width: 100px;
-            text-align:center;
-            animation: mover 1s linear forwards;}
-        span:active {
-            background-color: #000000;
-        }
-        @keyframes movel{
-            from {transform: translate(0);opacity: 0;}
-            to {transform: translateX(200px);opacity: 100%;}
-        }
-        @keyframes mover{
-            from {transform: translateX(900px);opacity: 0;}
-            to {transform: translateX(700px);opacity: 100%;}
-        } */
-
+        
         .left,.right {
             display: inline-block;
             padding: 5px 10px;
@@ -141,16 +105,14 @@
     <audio src="./audios/v0300fg10000cm00inrc77u092jlr10g.m4a" autoplay loop preload="auto"></audio>
    
     <script>
-
-
         const box = document.querySelector('.box')
         const left = document.querySelector('.left')
         const right = document.querySelector('.right')
         const h2 = document.querySelector('h2')
         const h3 = document.querySelector('h3')
         box.addEventListener('click',function(){
-            document.querySelector('video').muted = false
-            document.querySelector('video').play()
+            document.querySelector('audio').muted = false
+            document.querySelector('audio').play()
         })
         let i = 0
         const lh = 54
