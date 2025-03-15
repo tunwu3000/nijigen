@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* .box {
+            display: inline-block;
+            background: url(./微信图片_20250314212030.jpg) no-repeat center/cover;
+            width: 800px;
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+        } */
+        .box {
+            /* display: inline-block; */
+            background: url(./image/微信图片_20250314212030.jpg) no-repeat center/cover;
+            width: 900px;
+            height: 500px;
+            overflow: hidden;
+            margin:100px auto;
+            position: relative;
+            }
+        video {
+            display: none;
+            margin:100px auto;
+        }
+        .text {
+            display: flex;
+            justify-content: space-around;
+        }
+        h1 {
+       text-align: center;
+       margin-top: 30px;
+        }
+  
+        /* .left,.right {
+            position: absolute;
+            display: inline-block;
+            bottom: 50px;
+            left: -100px;
+            padding: 5px 10px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background-color: #2a2a2ab6;
+            color: rgb(205, 205, 205);
+            border: 2px solid black;
+            border-radius: 50px;
+            animation: movel 1s linear forwards;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.3s;
+            
+        }
+        .right {
+            right: -100px;
+            width: 100px;
+            text-align:center;
+            animation: mover 1s linear forwards;}
+        span:active {
+            background-color: #000000;
+        }
+        @keyframes movel{
+            from {transform: translate(0);opacity: 0;}
+            to {transform: translateX(200px);opacity: 100%;}
+        }
+        @keyframes mover{
+            from {transform: translateX(900px);opacity: 0;}
+            to {transform: translateX(700px);opacity: 100%;}
+        } */
+
+        .left,.right {
+            display: inline-block;
+            padding: 5px 10px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background-color: #2a2a2ab6;
+            color: rgb(205, 205, 205);
+            border: 2px solid black;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 24px;   
+        }
+
+        span:active {
+            background-color: #000000;}
+        h2 {opacity: 0;
+            text-align: center;}
+        h3 {
+            font-size: 24px;
+            text-align: center;  
+        }
+        h4 {
+            text-align: center;
+            text-shadow: 3px 3px 3px #ffffff;
+        }
+        .sf {
+            color: rgba(255, 255, 255, 0.647);
+            font-size: 22px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,'楷体', sans-serif;
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            text-decoration: none;
+            text-shadow: 1px 3px 3px brown;
+            transition: all;
+        }
+        .sf:hover {
+            border: 5px dashed white;
+            border-radius: 30%;
+            transform: scale(2);
+            left: 30px;
+            bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>Who is Wanderer's lover?</h1>
+        <h3></h3>
+        <h2>?</h2>
+        <h4></h4>
+        <div class = 'text'>
+            <span class="left">Kaedehara Kazuha</span>
+            <span class="right">Others</span>
+        </div>
+        <a href="./otherpage/surprise.html" class="sf">散枫</a>
+    </div>
+    <br/>
+    <video src="./audios/v0300fg10000cm00inrc77u092jlr10g.m4a" autoplay loop></video>
+   
+    <script>
+        const box = document.querySelector('.box')
+        const left = document.querySelector('.left')
+        const right = document.querySelector('.right')
+        const h2 = document.querySelector('h2')
+        const h3 = document.querySelector('h3')
+        box.addEventListener('click',function(){
+            document.querySelector('video').muted = false
+            document.querySelector('video').play()
+        })
+        let i = 0
+        const lh = 54
+        const lw = 165.2
+        const rw = 75
+//拒绝效果
+        right.addEventListener('click',function(){
+            i++
+            console.log(i)
+                left.style.width = `${lw*i}px`
+                left.style.height =`${lh*i}px`
+                left.style.lineHeight =`${lh*i}px`
+                // right.style.width = `${rw/i}px`
+                right.style.height =`${lh/i}px`
+                right.style.lineHeight =`${lh/i}px`
+            if(i===1){
+                left.style.fontSize = `28px`
+                right.style.fontSize = `20px`
+                h2.style.opacity = 1
+                h2.innerText = '╭ ( ´ﾟωﾟ)？你记错了'
+                right.innerText = 'Others(不是这个)'
+            }else if(i ===2 ){
+                left.style.fontSize = `30px`
+                right.style.fontSize = `18px`
+                h2.innerText = '哈？(〟-_・)ﾝ? 再想想'
+                right.innerText = '说了你记错了！'
+            }
+            else if(i ===3 ){
+                left.style.fontSize = `32px`
+                right.style.fontSize = `16px`
+                h2.innerText = '你确定吗？开什么玩笑(≖_≖ )'
+                right.innerText = '仔细想想'
+            }
+            else if(i ===4 ){
+                left.style.fontSize = `36px`
+                right.style.fontSize = `14px`
+                h2.innerText = '闭嘴！(▼皿▼#) '
+                right.innerText = '禁止选这个'
+            }
+            else if(i ===5 ){
+                left.style.fontSize = `40px`
+                right.style.display = `none`
+                h2.innerText = '好吧，既然你执意，那你选吧'
+            }
+        })
+
+//点击确认效果
+left.addEventListener('click',function(){
+    box.style.background = `url(./image/wanye.png) no-repeat top / cover `
+    left.style.display = `none`
+    right.style.display = `none`
+    document.querySelector('h1').innerHTML = `Wanderer & Kaedehara Kazuha`
+    h2.style.opacity = 1
+    h2.style.fontSize = `38px`
+    h2.innerHTML = ''
+
+//h3时间
+    document.querySelector('h3').style.fontSize = `30px`
+    //写入h3时间
+
+    let index = 0
+    //写入当前时间
+        //时间实例化
+        let currentDate = new Date ()
+        const y = currentDate.getFullYear()
+        const m = currentDate.getMonth()+1
+        const d = currentDate.getDate()
+        const hh = currentDate.getHours()< 10 ? '0' + currentDate.getHours() : currentDate.getHours();
+        const mm = currentDate.getMinutes() < 10 ? '0' + currentDate.getMinutes() : currentDate.getMinutes();
+        const ss = currentDate.getSeconds()< 10 ? '0' + currentDate.getSeconds() : currentDate.getSeconds();
+        const str3 = `${y}年${m}月${d}日 ${hh}:${mm}:${ss}`
+        
+    function printCharH3(){
+        //写入时间
+        const data3 = str3.split('')
+        console.log(data3)
+
+        if (index < data3.length) {
+            h3.innerHTML += data3[index];
+            console.log(data3[index])
+            index++;
+        } else {
+            h2inner ()
+            clearInterval(input)
+            setInterval(function(){
+            currentDate = new Date(); // 更新当前时间
+            const y = currentDate.getFullYear();
+            const m = currentDate.getMonth() + 1;
+            const d = currentDate.getDate();
+            const hh = currentDate.getHours() < 10 ? '0' + currentDate.getHours() : currentDate.getHours();
+            const mm = currentDate.getMinutes() < 10 ? '0' + currentDate.getMinutes() : currentDate.getMinutes();
+            const ss = currentDate.getSeconds() < 10 ? '0' + currentDate.getSeconds() : currentDate.getSeconds();
+            h3.innerHTML = `${y}年${m}月${d}日 ${hh}:${mm}:${ss}`; 
+            },1000) 
+        }
+    }
+    //逐一打印当前时间
+    let input = setInterval(printCharH3,300)
+
+    // h2.innerHTML = ` (*^▽^*) 欢迎见证我们故事的开始`
+    function h2inner (){
+        document.querySelector('.sf').classList.add('sfb')
+        const str2 = ' (*^▽^*) 欢迎见证我们故事的开始'
+        const data = str2.split('')
+        let i = 0;
+        h2.innerHTML = ''
+
+
+        function printchar2(){
+            if(i < data.length){
+                h2.innerHTML += data[i]
+                i++
+            }else {
+                clearInterval(print)
+            }
+        }
+
+    let print = setInterval(printchar2,300)
+    }
+    //彩蛋
+    function caidan() {
+        const h4text = ['你怎么还没走？',`什么？还想看？`,`真受不了你`,`好吧，就满足你一次`,`点击左下角有惊喜`]
+        //每1.3秒写入h4
+        let text = 0
+        let caidaninterval = setInterval(() => {
+            console.log(h4text[text])
+            if(text<h4text.length){
+                document.querySelector('h4').innerHTML = h4text[text]
+                text++
+            }else clearInterval(caidaninterval)  
+        }, 1300);
+        
+    }   
+    setTimeout(caidan,13000)
+})
+
+
+</script>
+</body>
+</html>

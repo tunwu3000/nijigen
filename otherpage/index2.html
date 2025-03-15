@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            /* display: inline-block; */
+            background: url(../image/two-dusty.png) no-repeat center/cover;
+            width: 900px;
+            height: 500px;
+            overflow: hidden;
+            margin:100px auto;
+            position: relative;
+            }
+        video {
+            display: none;
+            margin:100px auto;
+        }
+        .text {
+            display: flex;
+            justify-content: space-around;
+        }
+        h1 {
+       text-align: center;
+       margin-top: 30px;
+        }
+
+        .left,.right {
+            display: inline-block;
+            padding: 5px 10px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background-color: #2a2a2ab6;
+            color: rgb(205, 205, 205);
+            border: 2px solid black;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 24px;   
+        }
+
+        span:active {
+            background-color: #000000;}
+        h2 {opacity: 0;
+            text-align: center;}
+        h3 {
+            font-size: 24px;
+            text-align: center;  
+        }
+        .sf {
+            color: rgba(255, 255, 255, 0.647);
+            font-size: 22px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,'楷体', sans-serif;
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            text-decoration: none;
+            text-shadow: 1px 3px 3px brown;
+        }
+        .sf:hover {
+            border: 5px dashed white;
+            border-radius: 30%;
+            transform: scale(2);
+            left: 30px;
+            bottom: 20px;
+            
+        }
+        .move {
+            transition: all;
+            animation: run 10s linear;
+        }
+        @keyframes run {
+            3% {transform: translateX(-100px);}
+            10% {transform: translate(-600px,300px);}
+            20% {transform: translateY(300px);}
+            30% {transform: translateX(-500px);}
+            40% {transform: translateY(100px);}
+            50% {transform: translateX(-200px);}
+            60% {transform: translate(-700px,300px)}
+            70% {transform: translate(-700px,-300px)}
+            80% {transform: translateX(-500px)}
+            90% {transform: translateY(300px)}
+            100% {transform: translate(-700px,300px)}
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>Who is Kazuha's lover?</h1>
+        <h3></h3>
+        <h2>2</h2>
+        <div class = 'text'>
+            <span class="left">Wanderer</span>
+            <span class="right">Others</span>
+            <!-- <div class="move">444444</div> -->
+        </div>
+        <a href="../index.html" class="sf">散枫</a>
+    </div>
+    <br/>
+    <video src="./audios/v0300fg10000cm00inrc77u092jlr10g.m4a" autoplay loop></video>
+
+<script>
+        const box = document.querySelector('.box')
+        const left = document.querySelector('.left')
+        const right = document.querySelector('.right')
+        const h2 = document.querySelector('h2')
+        const h3 = document.querySelector('h3')
+        box.addEventListener('click',function(){
+            document.querySelector('video').muted = false
+            document.querySelector('video').play()
+        })
+        let i = 0
+        const lh = 54
+        const lw = 165.2
+        const rw = 75
+        //拒绝效果
+        right.addEventListener('click',function(){
+            i++
+            console.log(i)
+                left.style.width = `${lw*i}px`
+                left.style.height =`${lh*i}px`
+                left.style.lineHeight =`${lh*i}px`
+                // right.style.width = `${rw/i}px`
+                right.style.height =`${lh/i}px`
+                right.style.lineHeight =`${lh/i}px`
+            if(i===1){
+                left.style.fontSize = `28px`
+                right.style.fontSize = `20px`
+                h2.style.opacity = 1
+                h2.innerText = '("▔□▔)刚刚选过了还能错？'
+                right.innerText = 'Others'
+                right.style.textDecoration = `line-through`;
+            }else if(i ===2 ){
+                left.style.fontSize = `30px`
+                right.style.fontSize = `18px`
+                h2.innerText = 'ɿ(｡･ɜ･)ɾⓌⓗⓐⓣ？我要和你绝交'
+                right.innerText = '(-`ェ´-怒)选左边！'
+                right.style.textDecoration = `none`
+            }
+            else if(i ===3 ){
+                left.style.fontSize = `32px`
+                right.style.fontSize = `16px`
+                h2.innerText = '你逼我的！！！'
+                right.innerText = '抓不住我'
+                right.classList.add('move')
+
+            }
+            else if(i ===4 ){
+                left.style.fontSize = `36px`
+                right.style.fontSize = `14px`
+                h2.innerText = '为什么！！！别怪我出杀手锏'
+                right.innerText = '错误选项'
+                right.style.textDecoration = `line-through`;
+            }
+            else if(i ===5 ){
+                left.style.width = `${lw*2}px`
+                left.style.height =`${lh*3}px`
+                left.style.lineHeight =`${lh*3}px`
+
+                right.style.width = `${lw*2}px`
+                right.style.height =`${lh*3}px`
+                right.style.lineHeight =`${lh*3}px`
+                left.style.fontSize = `32px`
+                right.style.fontSize = `32px`
+                h2.innerText = '你猜答案是哪个？'
+                right.innerText = '流浪者'
+                right.style.textDecoration = `none`
+            }
+            else{
+                over()
+            }
+        })
+
+//点击确认效果
+left.addEventListener('click',over)
+
+
+
+
+function over (){
+
+    // background-image: url(../image/end2.png);
+    box.style.background = `url(../image/end2.png) no-repeat top / cover `
+    left.style.display = `none`
+    right.style.display = `none`
+    document.querySelector('h1').innerHTML = `Wanderer & Kaedehara Kazuha`
+    h2.style.opacity = 1
+    h2.style.fontSize = `38px`
+
+
+
+
+    let currentDate = new Date ()
+        const y = currentDate.getFullYear()
+        const m = currentDate.getMonth()+1
+        const d = currentDate.getDate()
+        const hh = currentDate.getHours()< 10 ? '0' + currentDate.getHours() : currentDate.getHours();
+        const mm = currentDate.getMinutes() < 10 ? '0' + currentDate.getMinutes() : currentDate.getMinutes();
+        const ss = currentDate.getSeconds()< 10 ? '0' + currentDate.getSeconds() : currentDate.getSeconds();
+        const str3 = `${y}年${m}月${d}日 ${hh}:${mm}:${ss}`
+    
+
+    // h2.innerHTML = 'o(＊＾▽＾＊)o♪我们故事永不结束'
+
+        const str2 = `o(＊＾▽＾＊)o♪我们故事永不结束b以此为证:b${str3}`
+
+        const data = str2.split('')
+        let i = 0;
+        h2.innerHTML = ''
+        
+        function printchar2(){
+            if(i < data.length){
+                console.log(data[i])
+                data[i] ==='b'?h2.innerHTML += `<br/>`:
+                h2.innerHTML += data[i]
+                i++}    
+            else {clearInterval(print)}
+            }
+
+    let print = setInterval(printchar2,300)
+    }
+</script>
+</body>
+</html>
