@@ -3,94 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preload" href="./image/first.jpg" as="image">
-    <!-- <link rel="preload" href="./image/wanye.png" as="image">
-    <link rel="preload" href="./image/wander.png" as="image">
-    <link rel="preload" href="./image/end2.png" as="image">
-    
-    <link rel="preload" href="./image/two_night.png" as="image">-->
+    <!-- <link rel="preload" href="./image/first.jpg" as="image"> -->
+     <link rel="stylesheet" href="./html.css">
     <title>Document</title> 
-    <style>
-        /* .box {
-            display: inline-block;
-            background: url(./微信图片_20250314212030.jpg) no-repeat center/cover;
-            width: 800px;
-            height: 400px;
-            overflow: hidden;
-            position: relative;
-        } */
-    
-        .box {
-            /* display: inline-block; */
-            background: url(./image/first.jpg) no-repeat center/cover;
-            width: 900px;
-            height: 500px;
-            overflow: hidden;
-            margin:100px auto;
-            position: relative;
-            }
-        video {
-            display: none;
-            margin:100px auto;
-        }
-        .text {
-            display: flex;
-            justify-content: space-around;
-        }
-        h1 {
-       text-align: center;
-       margin-top: 30px;
-        }
-        
-        .left,.right {
-            display: inline-block;
-            padding: 5px 10px;
-            height: 40px;
-            line-height: 40px;
-            text-align: center;
-            background-color: #2a2a2ab6;
-            color: rgb(205, 205, 205);
-            border: 2px solid black;
-            border-radius: 50px;
-            cursor: pointer;
-            text-decoration: none;
-            font-size: 24px;   
-        }
 
-        span:active {
-            background-color: #000000;}
-        h2 {opacity: 0;
-            text-align: center;}
-        h3 {
-            font-size: 24px;
-            text-align: center;  
-        }
-        h4 {
-            text-align: center;
-            text-shadow: 3px 3px 3px #ffffff;
-        }
-        .sf {
-            color: rgba(255, 255, 255, 0.647);
-            font-size: 22px;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,'楷体', sans-serif;
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
-            text-decoration: none;
-            text-shadow: 1px 3px 3px brown;
-            transition: all;
-        }
-        .sf:hover {
-            border: 5px dashed white;
-            border-radius: 30%;
-            transform: scale(2);
-            left: 30px;
-            bottom: 20px;
-        }
-    </style>
 </head>
 <body>
-    <div class="box">
+    <div class="box index1" id = 'index1' style="display: none;">
         <h1>Who is Wanderer's lover?</h1>
         <h3></h3>
         <h2>?</h2>
@@ -99,29 +18,91 @@
             <span class="left">Kaedehara Kazuha</span>
             <span class="right">Others</span>
         </div>
-        <a href="./otherpage/surprise.html" class="sf">散枫</a>
+        <a href="#surprise" class="sf nav">散枫</a>
     </div>
+
+    <div class="box index2" id = 'index2' style="display: none;">
+        <h1 >Who is Kazuha's lover?</h1>
+        <h3></h3>
+        <h2>2</h2>
+        <div class = 'text'>
+            <span class="left">Wanderer</span>
+            <span class="right">Others</span>
+            <!-- <div class="move">444444</div> -->
+        </div>
+        <a href="#index1" class="sf nav">散枫</a>
+    </div>
+
+    <div class="box surprise" id = 'surprise' style="display: none;">
+        <h1><a href="#index2" class="nav">Surprise!</a></h1>
+        <a href="#index1" class="sf nav">散枫</a>
+        <!-- <span>( ↑ 点一下？)</span> -->
+    </div>
+
     <br/>
+    <!-- <iframe src="./audios/vvideo.html" frameborder="0" style="display: none;"></iframe> -->
     <audio src="./audios/v0300fg10000cm00inrc77u092jlr10g.mp3" autoplay loop preload="auto"></audio>
    
-    <script>
-
-window.addEventListener('load',function(){
-
-    const box = document.querySelector('.box')
-        const left = document.querySelector('.left')
-        const right = document.querySelector('.right')
-        const h2 = document.querySelector('h2')
-        const h3 = document.querySelector('h3')
-        box.addEventListener('click',function(){
+<script>
+    window.addEventListener('load',function(){
+    document.querySelector('body').style.display = `block`
+    window.addEventListener('click',function(){
             document.querySelector('audio').muted = false
             document.querySelector('audio').play()
         })
+})
+
+function showPage(pageId) {
+    // 隐藏所有页面
+    document.querySelectorAll('.box').forEach(box => {
+        box.style.display = 'none';
+    });
+
+    // 显示目标页面
+    const targetPage = document.querySelector(pageId);
+    if (targetPage) {
+        targetPage.style.display = 'block';
+    }
+
+    // 根据页面ID执行对应的初始化代码
+    switch (pageId) {
+        case '#index1':
+            index1();
+            break;
+        case '#index2':
+            index2();
+            break;
+        case '#surprise':
+            break;
+    }
+
+    window.location.hash = pageId;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    //a.nav
+    const navLinks = document.querySelectorAll('.nav');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            const pageId = this.getAttribute('href');
+            showPage(pageId);
+        });
+    });
+    showPage('#index1'); // 默认显示Index 1页面
+});
+
+function index1 (){
+    const box = document.querySelector('.index1.box')
+        const left = document.querySelector('.index1 .left')
+        const right = document.querySelector('.index1 .right')
+        const h2 = document.querySelector('.index1 h2')
+        const h3 = document.querySelector('.index1 h3')
         let i = 0
         const lh = 54
         const lw = 165.2
         const rw = 75
-//拒绝效果
+//拒绝效果index1
         right.addEventListener('click',function(){
             i++
             console.log(i)
@@ -167,13 +148,13 @@ left.addEventListener('click',function(){
     box.style.background = `url(./image/wanye.png) no-repeat top / cover `
     left.style.display = `none`
     right.style.display = `none`
-    document.querySelector('h1').innerHTML = `Wanderer & Kaedehara Kazuha`
+    document.querySelector('.index1 h1').innerHTML = `Wanderer & Kaedehara Kazuha`
     h2.style.opacity = 1
     h2.style.fontSize = `38px`
     h2.innerHTML = ''
 
 //h3时间
-    document.querySelector('h3').style.fontSize = `30px`
+    document.querySelector('.index1 h3').style.fontSize = `30px`
     //写入h3时间
 
     let index = 0
@@ -217,7 +198,7 @@ left.addEventListener('click',function(){
 
     // h2.innerHTML = ` (*^▽^*) 欢迎见证我们故事的开始`
     function h2inner (){
-        document.querySelector('.sf').classList.add('sfb')
+        document.querySelector('.index1 .sf').classList.add('sfb')
         const str2 = ' (*^▽^*) 欢迎见证我们故事的开始'
         const data = str2.split('')
         let i = 0;
@@ -237,13 +218,13 @@ left.addEventListener('click',function(){
     }
     //彩蛋
     function caidan() {
-        const h4text = ['你怎么还没走？',`什么？还想看？`,`真受不了你`,`好吧，就满足你一次`,`点击左下角有惊喜`]
+        const h4text = ['你怎么还没走？',`什么？还想看？`,`真受不了你`,`好吧，就满足你一次`,`点击左下角有惊喜`,``]
         //每1.3秒写入h4
         let text = 0
         let caidaninterval = setInterval(() => {
             console.log(h4text[text])
             if(text<h4text.length){
-                document.querySelector('h4').innerHTML = h4text[text]
+                document.querySelector('.index1 h4').innerHTML = h4text[text]
                 text++
             }else clearInterval(caidaninterval)  
         }, 1300);
@@ -251,8 +232,133 @@ left.addEventListener('click',function(){
     }   
     setTimeout(caidan,13000)
 })
+}
+ 
+function index2 (){
+    const box = document.querySelector('.box.index2')
+        const left = document.querySelector('.index2 .left')
+        const right = document.querySelector('.index2 .right')
+        const h2 = document.querySelector('.index2 h2')
+        const h3 = document.querySelector('.index2 h3')
+        // box.addEventListener('click',function(){
+        //     document.querySelector('audio').muted = false
+        //     document.querySelector('audio').play()
+        // })
+        let i = 0
+        const lh = 54
+        const lw = 165.2
+        const rw = 75
 
-})
+        
+        //拒绝效果
+        right.addEventListener('click',function(){
+            i++
+            console.log(i)
+                left.style.width = `${lw*i}px`
+                left.style.height =`${lh*i}px`
+                left.style.lineHeight =`${lh*i}px`
+                // right.style.width = `${rw/i}px`
+                right.style.height =`${lh/i}px`
+                right.style.lineHeight =`${lh/i}px`
+            if(i===1){
+                left.style.fontSize = `28px`
+                right.style.fontSize = `20px`
+                h2.style.opacity = 1
+                h2.innerText = '("▔□▔)刚刚选过了还能错？'
+                right.innerText = 'Others'
+                right.style.textDecoration = `line-through`;
+            }else if(i ===2 ){
+                left.style.fontSize = `30px`
+                right.style.fontSize = `18px`
+                h2.innerText = 'ɿ(｡･ɜ･)ɾⓌⓗⓐⓣ？我要和你绝交'
+                right.innerText = '(-`ェ´-怒)选左边！'
+                right.style.textDecoration = `none`
+            }
+            else if(i ===3 ){
+                left.style.fontSize = `32px`
+                right.style.fontSize = `16px`
+                h2.innerText = '你逼我的！！！'
+                right.innerText = '抓不住我'
+                right.classList.add('move')
+
+            }
+            else if(i ===4 ){
+                left.style.fontSize = `36px`
+                right.style.fontSize = `14px`
+                h2.innerText = '为什么！！！别怪我出杀手锏'
+                right.innerText = '错误选项'
+                right.style.textDecoration = `line-through`;
+            }
+            else if(i ===5 ){
+                left.style.width = `${lw*2}px`
+                left.style.height =`${lh*3}px`
+                left.style.lineHeight =`${lh*3}px`
+
+                right.style.width = `${lw*2}px`
+                right.style.height =`${lh*3}px`
+                right.style.lineHeight =`${lh*3}px`
+                left.style.fontSize = `32px`
+                right.style.fontSize = `32px`
+                h2.innerText = '你猜答案是哪个？'
+                right.innerText = '流浪者'
+                right.style.textDecoration = `none`
+            }
+            else{
+                over()
+            }
+        })
+
+//点击确认效果
+left.addEventListener('click',over)
+
+
+function over (){
+
+    // background-image: url(../image/end2.png);
+    box.style.background = `url(./image/end2.png) no-repeat top / cover `
+    left.style.display = `none`
+    right.style.display = `none`
+    document.querySelector('.index2 h1').innerHTML = `Wanderer & Kaedehara Kazuha`
+    h2.style.opacity = 1
+    h2.style.fontSize = `38px`
+
+
+
+
+    let currentDate = new Date ()
+        const y = currentDate.getFullYear()
+        const m = currentDate.getMonth()+1
+        const d = currentDate.getDate()
+        const hh = currentDate.getHours()< 10 ? '0' + currentDate.getHours() : currentDate.getHours();
+        const mm = currentDate.getMinutes() < 10 ? '0' + currentDate.getMinutes() : currentDate.getMinutes();
+        const ss = currentDate.getSeconds()< 10 ? '0' + currentDate.getSeconds() : currentDate.getSeconds();
+        const str3 = `${y}年${m}月${d}日 ${hh}:${mm}:${ss}`
+    
+
+    // h2.innerHTML = 'o(＊＾▽＾＊)o♪我们故事永不结束'
+
+        const str2 = `o(＊＾▽＾＊)o♪我们故事永不结束b以此为证:b${str3}`
+
+        const data = str2.split('')
+        let i = 0;
+        h2.innerHTML = ''
+        
+        function printchar2(){
+            if(i < data.length){
+                console.log(data[i])
+                data[i] ==='b'?h2.innerHTML += `<br/>`:
+                h2.innerHTML += data[i]
+                i++}    
+            else {clearInterval(print)}
+            }
+
+    let print = setInterval(printchar2,300)
+    }
+
+ 
+}
+
+
 
 </script>
 </body>

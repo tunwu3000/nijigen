@@ -1,0 +1,131 @@
+body {
+display: none;
+}
+
+.box {
+    
+    /* suprise background: url(../image/wander.png) 
+    index2:url(../image/two-dusty.png)
+    */
+    width: 900px;
+    height: 500px;
+    overflow: hidden;
+    margin:100px auto;
+    position: relative;
+    }
+.index1 {
+        background: url(./image/first.jpg) no-repeat center/cover;
+    }
+.index2 {
+    /* index2:url(../image/two-dusty.png) */
+    background: url(./image/two-dusty.png) no-repeat center/cover;
+}
+.surprise {
+    /*  suprise background: url(../image/wander.png)  */
+    background: url(./image/wander.png) no-repeat center/cover;
+}
+
+.text {
+    display: flex;
+    justify-content: space-around;
+}
+h1 {
+text-align: center;
+margin-top: 30px;
+}
+
+.surprise h1 {
+    text-align: center;
+    margin: 0;
+    line-height: 500px;
+    animation:text 2s;
+    text-shadow: 1px 5px 10px black;}
+
+    .surprise h1 a {
+        color: rgb(255, 255, 255);
+        font-size:68px ;
+        padding: 5px 40px;
+        text-decoration: none;
+        background-color: #0000007f;
+        border: 3px solid black;
+        border-radius: 0 80px 0 80px;
+    }
+    .surprise h1:hover a {
+        font-size:98px ;
+    }
+    @keyframes text {
+        from {opacity: 0;}
+        to {
+            opacity: 1;
+        }
+    }
+
+.left,.right {
+    display: inline-block;
+    padding: 5px 10px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #2a2a2ab6;
+    color: rgb(205, 205, 205);
+    border: 2px solid black;
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 24px;   
+}
+
+span:active {
+    background-color: #000000;}
+h2 {opacity: 0;
+    text-align: center;}
+h3 {
+    font-size: 24px;
+    text-align: center;  
+}
+/* index1 独有h4 */
+h4 {
+    text-align: center;
+    text-shadow: 3px 3px 3px #ffffff;
+}
+
+
+.sf {
+    color: rgba(255, 255, 255, 0.647);
+    font-size: 22px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,'楷体', sans-serif;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    text-decoration: none;
+    text-shadow: 1px 3px 3px brown;
+    transition: all;
+}
+.sf:hover {
+    border: 5px dashed white;
+    border-radius: 30%;
+    transform: scale(2);
+    left: 30px;
+    bottom: 20px;
+}
+
+/* index2独有 */
+.move {
+    transition: all;
+    animation: run 10s linear;
+}
+@keyframes run {
+    3% {transform: translateX(-100px);}
+    10% {transform: translate(-600px,300px);}
+    20% {transform: translateY(300px);}
+    30% {transform: translateX(-500px);}
+    40% {transform: translateY(100px);}
+    50% {transform: translateX(-200px);}
+    60% {transform: translate(-700px,300px)}
+    70% {transform: translate(-700px,-300px)}
+    80% {transform: translateX(-500px)}
+    90% {transform: translateY(300px)}
+    100% {transform: translate(-700px,300px)}
+}
+/* index2 */
+
